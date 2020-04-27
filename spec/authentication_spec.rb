@@ -51,9 +51,9 @@ RSpec.describe 'DELETE /logout', type: :request do
     expect(response).to have_http_status(204)
   end
 
-  let(:user) { Fabricate(:owner) }
+  let(:user) { Fabricate(:user) }
   let(:login_url) { '/login' }
-  let(:protected_url) { 'api/v1/experiences'}
+  let(:protected_url) { '/api/v1/experiences'}
   let(:params) do
     {
       user: {
@@ -65,11 +65,16 @@ RSpec.describe 'DELETE /logout', type: :request do
 
   it 'blacklists the jwt' do
     get protected_url
-    expect(reponse).to have_http_status(401)
+    expect(response).to have_http_status(401)
     post login_url, params: params
-    token = response.headers('Authorization').split(" ").last
-    expect(token.to be_present)
-    
+    token = response.headers['Authorization'].split(" ").last
+    expect(token).to be_present
+    get protected_url, headers: { Authorization: "Bearer #{token}" }
+    puts response.body
+    expect(response).to have_http_status(200)
+    delete url, headers: { Authorization: "Bearer #{token}" }
+    get protected_url, headers: { Authorization: "Bearer #{token}" }
+    expect(response).to have_http_status(401)
     end
   
 end
