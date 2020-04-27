@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       resources :users do 
         resources :experiences
       end
-
+      resources :experiences
       # resources :experiences
     end
   end

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  respond_to :json
+  # respond_to :json
   rescue_from ActiveRecord::RecordNotFound, with: :unauthorized_error
   rescue_from AuthorizationError, with: :unauthorized_error
 
@@ -33,6 +33,6 @@ class ApplicationController < ActionController::API
   end
 
   def not_found
-    render json: { message: "Resource not found" }, status 404
+    render json: { message: "Resource not found" }, status: 404
   end
 end
