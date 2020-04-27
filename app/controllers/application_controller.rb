@@ -3,9 +3,9 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordNotFound, with: :unauthorized_error
   rescue_from AuthorizationError, with: :unauthorized_error
 
-  def render_resource(resource)
+  def render_resource(resource, with: nil)
     if resource.errors.empty?
-      render json: resource
+      render json: resource, include: with
     else
       validation_error(resource)
     end
@@ -24,7 +24,7 @@ class ApplicationController < ActionController::API
     }, status: :bad_request
   end
 
-  def authorize_user_resouce(resource)
+  def authorize_user_resource(resource)
     raise AuthorizationError.new if resource.user != current_user
   end
   
