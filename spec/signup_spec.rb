@@ -1,4 +1,6 @@
 require 'rails_helper'
+require 'fabrication'
+require 'faker'
 
 RSpec.describe 'POST /signup', type: :request do
   let(:url) { '/signup' }
@@ -40,6 +42,7 @@ RSpec.describe 'POST /signup', type: :request do
     end
 
     it 'returns validation errors' do
+      json = JSON.parse(response.body)
       expect(json['errors'].first['title']).to eq('Bad Request')
     end
   end

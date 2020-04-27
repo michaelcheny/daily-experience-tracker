@@ -1,4 +1,6 @@
 require 'rails_helper'
+require 'fabrication'
+require 'faker'
 
 RSpec.describe 'POST /login', type: :request do
   let(:user) { Fabricate(:user) }
@@ -26,8 +28,8 @@ RSpec.describe 'POST /login', type: :request do
     end
 
     it 'returns valid JWT token' do
-      token_from_request = response.headers['Authentication'].split(' ').last
-      decoded_token = JTW.decode(token_from_request, ENV['DEVISE_JWT_SECRET_KEY'], true)
+      token_from_request = response.headers['Authorization'].split(' ').last
+      decoded_token = JWT.decode(token_from_request, ENV['DEVISE_JWT_SECRET_KEY'], true)
       expect(decoded_token.first['sub']).to be_present
     end
   end
