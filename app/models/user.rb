@@ -8,5 +8,5 @@ class User < ApplicationRecord
          :registerable,
          jwt_revocation_strategy: JwtBlacklist
 
-  has_many :experiences
+  has_many :experiences, dependent: :destroy
 end

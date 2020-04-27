@@ -1,8 +1,19 @@
 Rails.application.routes.draw do
-  resources :experiences
   # devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: "home#index"
+  
+  namespace :api do
+    namespace :v1 do
+      
+      root to: "home#index"
+
+      resources :users do 
+        resources :experiences
+      end
+
+      # resources :experiences
+    end
+  end
 
   devise_for :users,
             path: '',
