@@ -32,6 +32,11 @@ gem 'dotenv-rails', groups: [:development, :test]
 # to fix jwt bug
 gem 'dry-configurable', '0.9.0'
 
+gem 'rspec-rails', groups: [:development, :tests]
+
+gem 'fabrication', groups: [:development, :tests]
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
