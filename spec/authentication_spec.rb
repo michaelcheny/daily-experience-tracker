@@ -50,4 +50,9 @@ RSpec.describe 'DELETE /logout', type: :request do
     delete url
     expect(response).to have_http_status(204)
   end
+
+  let(:user) { Fabricate(:owner) }
+  let(:login_url) { '/login' }
+  let(:protected_url) { 'api/v1/experiences'}
+  
 end
