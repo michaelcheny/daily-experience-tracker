@@ -6,8 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# User.destroy_all
+User.destroy_all
 
-# Experience.destroy_all
+Experience.destroy_all
 
-# michael = User.new()
+michael = User.create(email: "michael@michael.com", password: "password")
+michael.experiences.create(title: "DO NOT INJECT DISINFECTANT", description: "PLEASE DO NOT INJECT LYSOL")
+
+dog = User.create(email: "dog@dog.com", password: "password")
+dog.experiences.create(title: "pooped", description: "woof!")
