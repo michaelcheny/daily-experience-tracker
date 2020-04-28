@@ -9,4 +9,8 @@ class User < ApplicationRecord
          jwt_revocation_strategy: JwtBlacklist
 
   has_many :experiences, dependent: :destroy
+
+
+  validates :email, presence: true
+  
 end
