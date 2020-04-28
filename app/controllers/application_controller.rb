@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
   # respond_to :json
-  rescue_from ActiveRecord::RecordNotFound, with: :unauthorized_error
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found
   rescue_from AuthorizationError, with: :unauthorized_error
 
   def render_resource(resource, with: nil)

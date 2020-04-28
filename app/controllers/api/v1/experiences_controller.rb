@@ -11,7 +11,7 @@ class Api::V1::ExperiencesController < ApplicationController
   def show
     experience = Experience.find(params[:id])
     authorize_user_resource(experience)
-    render_resource(experience, with: [:user])
+    render_resource(experience)
   end
 
   def create
