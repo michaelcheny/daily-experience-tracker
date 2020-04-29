@@ -3,7 +3,7 @@ import React from "react";
 const HomePage = () => {
   return (
     <div>
-      <h1>N95 Masks</h1>
+      <h1>YO WE T DA HOMEPAGE</h1>
     </div>
   );
 };
