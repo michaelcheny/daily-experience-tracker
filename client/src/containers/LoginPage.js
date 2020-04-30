@@ -5,13 +5,10 @@ const LoginPage = () => {
   const url = "http://localhost:3001/login";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("email: " + email);
-    console.log("password: " + password);
-    // method to post to /api and save token and shieeet
     loginUser(email, password);
     setEmail("");
     setPassword("");
@@ -30,15 +27,12 @@ const LoginPage = () => {
         },
       }),
     });
-    const token = res.headers.get("authorization");
     const data = await res.json();
-    // console.log(data);
+    const token = res.headers.get("authorization");
     localStorage.setItem("token", token);
+    // UserContext
     setUser(data);
-
     return data;
-    // STORE THE FUCKING TOKEN and authed user in context api
-    // TOKEN /////// res.headers.get("authorization")
   };
 
   return (

@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const NavBar = () => {
   const { setUser } = useContext(UserContext);
+  const { toggleTheme } = useContext(ThemeContext);
 
   const handleLogOut = async () => {
     const token = localStorage.getItem("token");
@@ -22,7 +24,9 @@ const NavBar = () => {
     <nav className="navbar">
       {/* INSERT IMAGE HERE */}
       <Link to="/" style={{ textDecoration: "none" }}>
-        <h3 className="main-title">EXP TRACKA</h3>
+        <h3 className="main-title" onClick={toggleTheme}>
+          EXP TRACKA
+        </h3>
       </Link>
       <ul className="nav-items">
         <Link to="/">
