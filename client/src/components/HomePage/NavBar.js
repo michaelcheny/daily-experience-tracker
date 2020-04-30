@@ -1,7 +1,10 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../context/UserContext";
 
 const NavBar = () => {
+  const { setUser } = useContext(UserContext);
+
   const handleLogOut = async () => {
     const token = localStorage.getItem("token");
     const res = await fetch("http://localhost:3001/logout", {
@@ -12,6 +15,7 @@ const NavBar = () => {
       },
     });
     // return await res.json();
+    setUser(null);
   };
 
   return (

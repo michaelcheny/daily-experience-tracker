@@ -18,8 +18,8 @@ const HomePage = () => {
   return (
     <div>
       <h1>yoyo</h1>
-      <h5>from context: {user.email}</h5>
-      <p>{user.email}</p>
+      <h5>hello {user ? user.email : null}</h5>
+      <p>{user ? user.created_at : null}</p>
     </div>
   );
 };
