@@ -5,6 +5,7 @@ import HomePage from "./containers/HomePage";
 import LoginPage from "./containers/LoginPage";
 import NavBar from "./components/HomePage/NavBar";
 import { UserContext } from "./context/UserContext";
+import ProfilePage from "./containers/ProfilePage";
 
 function App() {
   const [user, setUser] = useState("");
@@ -36,6 +37,9 @@ function App() {
             </Route>
             <Route path="/login">
               <LoginPage />
+            </Route>
+            <Route path="/profile">
+              <ProfilePage />
             </Route>
           </Switch>
         </Router>

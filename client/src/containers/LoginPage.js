@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
-
-const AuthContext = React.createContext();
+import React, { useState, useContext } from "react";
+import { UserContext } from "../context/UserContext";
 
 const LoginPage = () => {
-  const baseUrl = "http://localhost:3001/login";
+  const baseUrl = "http://localhost:3001/";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState("");
+  const { user, setUser } = useContext(UserContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -19,7 +18,7 @@ const LoginPage = () => {
   };
 
   const loginUser = async (email, password) => {
-    const res = await fetch(baseUrl, {
+    const res = await fetch(`${baseUrl}login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,9 +30,11 @@ const LoginPage = () => {
         },
       }),
     });
-    const data = res.json();
     const token = res.headers.get("authorization");
+    const data = res.json();
     localStorage.setItem("token", token);
+    setUser(user);
+
     return data;
     // STORE THE FUCKING TOKEN and authed user in context api
     // TOKEN /////// res.headers.get("authorization")
