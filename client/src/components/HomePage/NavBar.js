@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import { ThemeContext } from "../../context/ThemeContext";
 
-const NavBar = () => {
+const NavBar = ({ toggleTheme }) => {
   const { setUser } = useContext(UserContext);
-  const { toggleTheme } = useContext(ThemeContext);
+  // const { toggleTheme } = useContext(ThemeContext);
 
   const handleLogOut = async () => {
     const token = localStorage.getItem("token");
-    const res = await fetch("http://localhost:3001/logout", {
+    await fetch("http://localhost:3001/logout", {
       method: "DELETE",
       headers: {
         Accept: "application/json",
