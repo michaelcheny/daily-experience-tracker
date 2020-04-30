@@ -6,18 +6,21 @@ import LoginPage from "./containers/LoginPage";
 import NavBar from "./components/HomePage/NavBar";
 import { UserContext } from "./context/UserContext";
 import ProfilePage from "./containers/ProfilePage";
-import { ThemeContext, themes } from "./context/ThemeContext";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./styles/GlobalStyles";
 import { lightTheme, darkTheme } from "./styles/Themes";
+import { useDarkMode } from "./components/useDarkMode";
 
 function App() {
   const [user, setUser] = useState("");
-  const [theme, setTheme] = useState("light");
+  // const [theme, setTheme] = useState("light");
+  const [theme, themeToggler] = useDarkMode();
 
-  const toggleTheme = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
-  };
+  // const themeMode = theme === "light" ? lightTheme : darkTheme;
+
+  // const toggleTheme = () => {
+  //   theme === "light" ? setTheme("dark") : setTheme("light");
+  // };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -42,7 +45,7 @@ function App() {
         <div className="App">
           <UserContext.Provider value={{ user, setUser }}>
             <Router>
-              <NavBar toggleTheme={toggleTheme} />
+              <NavBar toggleTheme={themeToggler} theme={theme} />
               <Switch>
                 <Route path="/" exact>
                   <HomePage />

@@ -1,11 +1,9 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
-import { ThemeContext } from "../../context/ThemeContext";
 
-const NavBar = ({ toggleTheme }) => {
+const NavBar = ({ toggleTheme, theme }) => {
   const { setUser } = useContext(UserContext);
-  // const { toggleTheme } = useContext(ThemeContext);
 
   const handleLogOut = async () => {
     const token = localStorage.getItem("token");
@@ -16,7 +14,6 @@ const NavBar = ({ toggleTheme }) => {
         Authorization: token,
       },
     });
-    // return await res.json();
     setUser(null);
   };
 
