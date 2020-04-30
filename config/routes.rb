@@ -15,6 +15,10 @@ Rails.application.routes.draw do
     end
   end
 
+  devise_scope :user do
+    get '/auto_login', to: 'sessions#auto_login'
+  end
+
   devise_for :users,
             path: '',
             path_names: {

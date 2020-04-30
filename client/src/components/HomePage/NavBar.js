@@ -2,6 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
+  const handleLogOut = async () => {
+    const token = localStorage.getItem("token");
+    const res = await fetch("http://localhost:3001/logout", {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        Authorization: token,
+      },
+    });
+    // return await res.json();
+  };
+
   return (
     <nav className="navbar">
       {/* INSERT IMAGE HERE */}
@@ -17,6 +29,9 @@ const NavBar = () => {
         </Link>
         <Link to="/profile">
           <li>Profile</li>
+        </Link>
+        <Link>
+          <li onClick={handleLogOut}>Log Out</li>
         </Link>
       </ul>
     </nav>
