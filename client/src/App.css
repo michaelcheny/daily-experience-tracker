@@ -3,26 +3,27 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  /* background-color: #282c34; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  /* color: white; */
 }
 
-.App-link {
+/* .App-link {
   color: #61dafb;
-}
+} */
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   min-height: 10vh;
-  background-color: rgba(0, 0, 0, 0.836);
+  /* background-color: rgba(0, 0, 0, 0.836); */
+  /* color: #fffff0; */
 }
 .nav-items {
   list-style: none;
@@ -35,7 +36,7 @@ nav {
 .nav-items a {
   text-align: center;
   text-decoration: none;
-  color: whitesmoke;
+  /* color: whitesmoke; */
   /* margin: 15px auto; */
 }
 
@@ -44,14 +45,14 @@ nav {
 }
 
 .main-title {
-  color: whitesmoke;
+  /* color: whitesmoke; */
   text-decoration: none;
   margin-left: 30px;
 }
 
 .nav-routes {
   text-decoration: none;
-  color: whitesmoke;
+  /* color: whitesmoke; */
 }
 
 .nav-routes:visited {

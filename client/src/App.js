@@ -1,6 +1,6 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./containers/HomePage";
 import LoginPage from "./containers/LoginPage";
 import NavBar from "./components/HomePage/NavBar";
@@ -13,14 +13,7 @@ import { useDarkMode } from "./components/useDarkMode";
 
 function App() {
   const [user, setUser] = useState("");
-  // const [theme, setTheme] = useState("light");
   const [theme, themeToggler] = useDarkMode();
-
-  // const themeMode = theme === "light" ? lightTheme : darkTheme;
-
-  // const toggleTheme = () => {
-  //   theme === "light" ? setTheme("dark") : setTheme("light");
-  // };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -47,15 +40,11 @@ function App() {
             <Router>
               <NavBar toggleTheme={themeToggler} theme={theme} />
               <Switch>
-                <Route path="/" exact>
-                  <HomePage />
-                </Route>
-                <Route path="/login">
-                  <LoginPage />
-                </Route>
-                <Route path="/profile">
-                  <ProfilePage />
-                </Route>
+                <main>
+                  <Route path="/" exact component={HomePage} />
+                  <Route path="/login" component={LoginPage} />
+                  <Route path="/profile" component={ProfilePage} />
+                </main>
               </Switch>
             </Router>
           </UserContext.Provider>
