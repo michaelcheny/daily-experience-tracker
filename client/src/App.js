@@ -10,6 +10,8 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./styles/GlobalStyles";
 import { lightTheme, darkTheme } from "./styles/Themes";
 import { useDarkMode } from "./components/useDarkMode";
+import Sidebar from "./components/Sidebar";
+import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 
 function App() {
   const [user, setUser] = useState("");
@@ -35,20 +37,21 @@ function App() {
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
-        <div className="App">
-          <UserContext.Provider value={{ user, setUser }}>
-            <Router>
-              <NavBar toggleTheme={themeToggler} theme={theme} />
-              <Switch>
-                <main>
-                  <Route path="/" exact component={HomePage} />
-                  <Route path="/login" component={LoginPage} />
-                  <Route path="/profile" component={ProfilePage} />
-                </main>
-              </Switch>
-            </Router>
-          </UserContext.Provider>
-        </div>
+        {/* <div className="App"> */}
+        <UserContext.Provider value={{ user, setUser }}>
+          <Router>
+            <NavBar toggleTheme={themeToggler} theme={theme} />
+            {/* <Sidebar /> */}
+            <Switch>
+              <main>
+                <Route path="/" exact component={HomePage} />
+                <Route path="/login" component={LoginPage} />
+                <Route path="/profile" component={ProfilePage} />
+              </main>
+            </Switch>
+          </Router>
+        </UserContext.Provider>
+        {/* </div> */}
       </>
     </ThemeProvider>
   );
